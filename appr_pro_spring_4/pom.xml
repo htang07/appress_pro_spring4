@@ -1,0 +1,41 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>org.htang.spring</groupId>
+  <artifactId>appr_pro_spring_4</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+  <url>https://github.com/Apress/pro-spring-14</url>
+  <properties>
+		<!-- <maven.compiler.source>1.8</maven.compiler.source> -->
+		<endorsed.dir>${project.build.directory}/endorsed</endorsed.dir>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<commons-logging.version>1.2</commons-logging.version>
+		<slf4j.version>1.7.7</slf4j.version>
+		<log4j.version>1.2.17</log4j.version>
+		<tomcat.version>8.5.33</tomcat.version>
+	</properties>
+	
+	<build>
+		<finalName>ApprProSpring4</finalName>
+		<plugins>
+			<plugin>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>3.7.0</version>
+				<configuration>
+					<source>1.8</source>
+					<target>1.8</target>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+	<repositories>
+		<repository>
+			<id>alfreso_nexus</id>
+			<name>alfreso_nexus</name>
+			<url>https://artifacts.alfresco.com/nexus/content/repositories/public/</url>
+		</repository>
+	</repositories>
+	
+	<!-- **************************spring dependencies*************************** -->
+	<dependencies>
+	</dependencies>
+</project>
