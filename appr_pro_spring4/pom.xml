@@ -17,7 +17,7 @@
 		<tomcat.version>8.5.33</tomcat.version>
 	</properties>
 	<build>
-		<finalName>ApprProSpringWebApp</finalName>
+		<finalName>ApprProSpring4WebApp</finalName>
 		<plugins>
 			<plugin>
 				<artifactId>maven-compiler-plugin</artifactId>
