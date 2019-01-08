@@ -1,0 +1,26 @@
+----Step 1 start derby dabatabase
+cmd> cd C:\Program_Files\db-derby-10.11.1.1-bin\bin
+or
+cmd> C:\Program Files\Java\jdk1.8.0_161\db\bin
+cmd>NetworkServerControl -p 5000 start
+
+---Step 2 start ij command console
+>%JAVA_HOME%\db\bin\ij 
+
+----Step 3 run ij command
+ij> connect 'jdbc:derby://localhost:5000/BookStore;create=true';
+ij> connect 'jdbc:derby://localhost:5000/BookStore';
+
+ij> run '<option-path>/createTables.sql'
+---derby location C:\Program_Files\db-derby-10.11.1.1-bin\bin
+
+--Then run SimpleClientTest class(from package com.virtualpairprogrammers.client) to insert data
+
+mysl>CREATE USER 'pro_spring4'@'%' IDENTIFIED BY 'pass';
+	GRANT ALL PRIVILEGES ON *.* TO 'pro_spring4'@'%';
+	CREATE USER 'pro_spring4'@'localhost' IDENTIFIED BY 'pass';
+	GRANT ALL PRIVILEGES ON *.* TO 'pro_spring4'@'localhost';
+	
+	
+mysql>create database appress_spring4;
+mysql> use appress_spring4;

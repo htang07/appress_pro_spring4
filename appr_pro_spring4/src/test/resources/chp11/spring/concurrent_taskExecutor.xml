@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<bean id="javaExecutor" class="java.util.concurrent.Executors" factory-method="newFixedThreadPool">
+	<!-- reference http://www.java-allandsundry.com/2012/05/java-executor-sample-and-spring-xml.html -->
+		<constructor-arg value="3"></constructor-arg>
+	</bean>
+	
+	<bean id="concurrentTaskExecutor" class="org.springframework.scheduling.concurrent.ConcurrentTaskExecutor">
+		<constructor-arg ref="javaExecutor"></constructor-arg>
+	</bean>
+</beans>

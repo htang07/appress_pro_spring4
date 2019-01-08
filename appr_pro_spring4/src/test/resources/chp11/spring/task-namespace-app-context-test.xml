@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:task="http://www.springframework.org/schema/task"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/task
+        http://www.springframework.org/schema/task/spring-task.xsd">
+	
+	<!-- calculate initial delay using spring: set property of one bean by reading the property of another bean?
+	 -->
+	 <!--  https://stackoverflow.com/questions/1602640/spring-set-property-of-one-bean-by-reading-the-property-of-another-bean -->
+	 <bean id ="taskExecutionTime" class="com.apress.prospring4.chp11.TaskExecutionTime">
+		<constructor-arg index="0" name="targetTime" type="java.lang.String" value="16:30" />
+		<constructor-arg index="1" name="periodInterval" type="java.lang.String" value="1"/>
+		<constructor-arg index="2" name="intervalUnit" type="java.lang.String" value="day"/>
+	</bean>
+	
+    <import resource="car-job-app-context-test.xml"/>
+	<task:scheduler id="myScheduler" pool-size="10"/>
+	
+	
+   <!--  <task:scheduled-tasks scheduler="myScheduler">
+        <task:scheduled ref="carService" method="updateCarAgeJob"  fixed-delay="10000"  />
+    </task:scheduled-tasks> -->
+    
+    <!-- initial-delay="#{taskExecutionTime.initialDelay}" -->
+    <task:scheduled-tasks scheduler="myScheduler">
+        <task:scheduled ref="carService" method="updateCarAgeJob"  fixed-delay="10000"  />
+    </task:scheduled-tasks>
+</beans>
