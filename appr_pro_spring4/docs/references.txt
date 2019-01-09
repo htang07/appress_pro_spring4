@@ -5,3 +5,6 @@ https://github.com/getting-started-with-spring/4thEdition
 
 https://howtodoinjava.com/spring-core/2-ways-to-execute-timer-tasks-in-spring-3/
 
+https://www.programcreek.com/2009/08/schedule-a-task-to-a-certain-time-and-make-java-app-run-as-a-windows-service-using-java-service-wrapper/
+
+https://stackoverflow.com/questions/9375882/how-i-can-run-my-timertask-everyday-2-pm
