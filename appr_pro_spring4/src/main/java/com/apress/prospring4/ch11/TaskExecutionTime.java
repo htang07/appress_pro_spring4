@@ -7,9 +7,8 @@ import java.time.format.DateTimeFormatter;
 import java.time.temporal.ChronoUnit;
 
 public class TaskExecutionTime {
-	
+
 	private LocalTime targetTime;
-	
 
 	private LocalDateTime targetDateTime;
 	private Long initialDelay;
@@ -17,20 +16,19 @@ public class TaskExecutionTime {
 	private DateTimeFormatter timeFormatter;
 	private ChronoUnit intervalUnit;
 	private LocalDateTime goalDateTime;
-	
-	public TaskExecutionTime() {}
-	public TaskExecutionTime(String  targetTime, String periodInterval, String intervalUnit) {
-		this.targetTime = LocalTime.parse(targetTime, timeFormatter);
-		this.targetDateTime = LocalDateTime.of(LocalDate.now(), this.targetTime);
-		this.periodInterval = Long.parseLong(periodInterval);
-		this.intervalUnit = TaskExecutionTime.selectGivenChronoUnit(intervalUnit);
-		this.goalDateTime = targetDateTime.plus(this.periodInterval, this.intervalUnit);
-		this.initialDelay = java.sql.Timestamp.valueOf(this.goalDateTime).getTime() - java.sql.Timestamp.valueOf(LocalDateTime.now()).getTime();
+
+	public TaskExecutionTime() {
 	}
-	
+
+	public TaskExecutionTime(String targetTime, String periodInterval, String intervalUnit) {
+		timeFormatter = DateTimeFormatter.ofPattern("HH:mm:ss");
+		setup(targetTime, periodInterval, intervalUnit);
+	}
+
 	public long getInitialDelay() {
 		return initialDelay;
 	}
+
 	public LocalTime getTargetTime() {
 		return targetTime;
 	}
@@ -54,12 +52,33 @@ public class TaskExecutionTime {
 	public LocalDateTime getGoalDateTime() {
 		return goalDateTime;
 	}
-	
-	
-	
-	public static ChronoUnit selectGivenChronoUnit(String unit) {
+
+	private void setup(String targetTime, String periodInterval, String intervalUnit) {
+
 		
-		switch(unit) {
+		this.periodInterval = Long.parseLong(periodInterval);
+		this.intervalUnit = TaskExecutionTime.selectGivenChronoUnit(intervalUnit);
+		
+		if (!targetTime.isEmpty()) {
+			this.targetTime = LocalTime.parse(targetTime, timeFormatter);
+			this.targetDateTime = LocalDateTime.of(LocalDate.now(), this.targetTime);
+			this.goalDateTime = targetDateTime.plus(this.periodInterval, this.intervalUnit);
+			
+		}else {
+			this.targetDateTime = LocalDateTime.now().plus(this.periodInterval, this.intervalUnit);
+			this.goalDateTime = targetDateTime;
+		}
+
+		System.out.println("goalDateTime: " + this.goalDateTime.toString());
+		this.initialDelay = java.sql.Timestamp.valueOf(this.goalDateTime).getTime()
+				- java.sql.Timestamp.valueOf(LocalDateTime.now()).getTime();
+		System.out.println("initialDelay: " + this.initialDelay);
+
+	}
+
+	public static ChronoUnit selectGivenChronoUnit(String unit) {
+
+		switch (unit) {
 		case "day":
 			return ChronoUnit.DAYS;
 		case "hour":
@@ -71,6 +90,5 @@ public class TaskExecutionTime {
 		}
 		return null;
 	}
-	
-	
+
 }

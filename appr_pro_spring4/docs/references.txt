@@ -8,3 +8,14 @@ https://howtodoinjava.com/spring-core/2-ways-to-execute-timer-tasks-in-spring-3/
 https://www.programcreek.com/2009/08/schedule-a-task-to-a-certain-time-and-make-java-app-run-as-a-windows-service-using-java-service-wrapper/
 
 https://stackoverflow.com/questions/9375882/how-i-can-run-my-timertask-everyday-2-pm
+
+https://stackoverflow.com/questions/14260328/spring-reference-a-property-from-a-property-bean
+https://stackoverflow.com/questions/1602640/spring-set-property-of-one-bean-by-reading-the-property-of-another-bean 
+
+
+https://www.javaworld.com/article/2076243/java-se/log4j-delivers-control-over-logging.html
+---Log4j has three main components:
+
+-Categories
+-Appenders
+-Layouts
